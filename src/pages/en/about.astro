@@ -1,0 +1,10 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../style.css";
+import { About } from "~/views/about";
+
+---
+
+<Layout title="Welcome to About">
+  <About client:idle/>
+</Layout>

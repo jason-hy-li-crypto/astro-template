@@ -1,0 +1,13 @@
+---
+import { Flex } from "styled-system/jsx";
+import { Link } from "~/components/ui/link";
+import { getLangFromUrl } from "~/i18n/utils";
+---
+
+<Flex gap={4} p={4}>
+  <a href="/en" class="link" data-astro-prefetch>Home</a>
+  <a href="/en/about" class="link" data-astro-prefetch>about</a>
+  <a href="/en/trade" class="link">Trade</a>
+  <a href="/en/earn" class="link">Earn</a>
+  <a href="/en/dashboard" class="link">Dashboard</a>
+</Flex>
