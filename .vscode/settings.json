@@ -1,5 +1,5 @@
 {
     "typescript.preferences.autoImportFileExcludePatterns": [
-        "@ark-ui/react"
+        "@ark-ui/react",
     ],
 }

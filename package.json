@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "svgr": "svgr --config-file ./src/lib/icons/svgr.config.cjs ./src/lib/icons/raw-svg-icons",
     "gen:locale": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide",
     "prepare": "panda codegen",
     "dev": "astro dev",
@@ -21,12 +22,25 @@
     "astro": "^4.9.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "@typechain/ethers-v6": "0.5.1",
+    "ethers": "6.11.1",
+    "typechain": "8.3.2",
+    "@react-web3-wallet/brave-wallet": "3.0.0",
+    "@react-web3-wallet/defiwallet": "3.0.0",
+    "@react-web3-wallet/metamask": "3.0.0",
+    "@react-web3-wallet/react": "3.0.0",
+    "zustand": "4.5.2"
   },
   "devDependencies": {
     "@inlang/paraglide-astro": "^0.1.18",
     "@inlang/paraglide-js": "1.9.1",
     "@pandacss/dev": "^0.39.1",
-    "@park-ui/panda-preset": "^0.37.1"
+    "@park-ui/panda-preset": "^0.37.1",
+    "@svgr/cli": "^6.5.1",
+    "@types/lodash": "^4.14.202",
+    "babel-plugin-react-inline-svg-unique-use-id": "^0.1.1",
+    "lodash": "^4.17.21",
+    "markdown-table": "^3.0.3"
   }
 }
