@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-import * as m from "../paraglide/messages.js";
+import * as m from "../lib/i18n/paraglide/messages.js";
 import { Flex, Box } from "styled-system/jsx";
-import { Button } from "~/components/ui/button.js";
-import { FormLabel } from "~/components/ui/form-label.js";
-import { Input } from "~/components/ui/input.js";
-import { Text } from "~/components/ui/text.js";
-import { Checkbox } from "~/components/ui/checkbox.js";
+import { Text } from "@cronos-app/park-ui/text.js";
+import { Button } from "@cronos-app/park-ui/button.js";
+import { FormLabel } from "@cronos-app/park-ui/form-label.js";
+import { Input } from "@cronos-app/park-ui/input.js";
+import { Checkbox } from "@cronos-app/park-ui/checkbox.js";
+
 export const About = () => {
   return (
     <Box mx="auto" p={4} bg="bg.subtle">

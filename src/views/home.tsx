@@ -1,15 +1,17 @@
+import { m } from "@cronos-app/i18n/m";
 import { Ticket } from "@cronos-app/icons/src";
+import { Accordion, Alert, DatePicker, Menu } from "@cronos-app/park-ui";
+import { Icon } from "@cronos-app/park-ui/alert";
+import { Button } from "@cronos-app/park-ui/button";
+import { IconButton } from "@cronos-app/park-ui/icon-button";
+import { Input } from "@cronos-app/park-ui/input";
 import { currentWallet } from "@cronos-app/wallet";
+import { useState } from "react";
 import { Container, Flex } from "styled-system/jsx";
-import { Accordion, Alert, DatePicker, Portal } from "~/components";
-import { Button } from "~/components/ui/button";
-import { Icon } from "~/components/ui/icon";
-import { IconButton } from "~/components/ui/icon-button";
-import { Input } from "~/components/ui/input";
-import { m } from "~/i18n/m";
 
 export const Home = () => {
   const isConnected = currentWallet.useIsConnected();
+  const [isOpenMenu, setMenuOpen] = useState(false);
   return (
     <Container>
       {isConnected ? (
@@ -27,6 +29,24 @@ export const Home = () => {
 
       <h1>{m.test()}</h1>
       <p>This is the landing page.</p>
+      <Menu.Root
+        onOpenChange={(d) => {
+          setMenuOpen(d.open);
+        }}
+      >
+        <Menu.Trigger>
+          <Button color={isOpenMenu ? "red" : "green"}>
+            Open menu <Menu.Indicator>+</Menu.Indicator>
+          </Button>
+        </Menu.Trigger>
+        <Menu.Positioner>
+          <Menu.Content>
+            <Menu.Item value="react">React</Menu.Item>
+            <Menu.Item value="solid">Solid</Menu.Item>
+            <Menu.Item value="vue">Vue</Menu.Item>
+          </Menu.Content>
+        </Menu.Positioner>
+      </Menu.Root>
       <Button
         variant={"jason"}
         onClick={() => {
@@ -34,9 +54,7 @@ export const Home = () => {
         }}
       >
         Get Started
-        <Icon>
-          <Ticket />
-        </Icon>
+        <Ticket />
       </Button>
       <Accordion.Root defaultValue={["React"]} multiple>
         {["React", "Solid", "Vue"].map((item) => (

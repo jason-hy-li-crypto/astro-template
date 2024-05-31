@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "parkui:add": "pnpm dlx @park-ui/cli add",
     "svgr": "svgr --config-file ./src/lib/icons/svgr.config.cjs ./src/lib/icons/raw-svg-icons",
     "gen:locale": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide",
     "prepare": "panda codegen",

@@ -3,7 +3,7 @@
   "cssFramework": "panda",
   "jsFramework": "react",
   "importAliases": {
-    "components": "~/components/ui",
+    "components": "~/lib/park-ui",
     "utils": "~/lib"
   },
   "useReactServerComponents": false
