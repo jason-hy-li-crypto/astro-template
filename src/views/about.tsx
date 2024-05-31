@@ -73,6 +73,7 @@ const LoginForm: React.FC = () => {
       <Checkbox
         checked={rememberMe}
         onChange={(event) => {
+          // @ts-expect-error a
           setRememberMe(event.target.checked);
         }}
       />

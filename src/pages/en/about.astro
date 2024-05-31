@@ -1,10 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import "../style.css";
-import { About } from "~/views/about";
-
+import { About as AboutView } from "~/views/about";
 ---
 
 <Layout title="Welcome to About">
-  <About client:idle/>
+  <AboutView client:idle />
 </Layout>

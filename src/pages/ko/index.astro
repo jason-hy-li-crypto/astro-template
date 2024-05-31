@@ -1,11 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { View } from "../../components/View";
 import "../style.css";
 import { Link } from "~/components/ui/link";
 ---
 
 <Layout title="Welcome to Astro.">
   <Link href="/about" data-astro-prefetch>Link</Link>
-  <View client:load />
 </Layout>
