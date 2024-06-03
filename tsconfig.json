@@ -9,5 +9,6 @@
       "@cronos-app/*":["./src/lib/*"],
       "~/*": ["./src/*"],
     }
-  }
+  },
+  "include": ["tailwind.config.mjs","src"]
 }
