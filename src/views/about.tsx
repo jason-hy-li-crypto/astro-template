@@ -1,26 +1,15 @@
 import React, { useState } from "react";
 
 import * as m from "../lib/i18n/paraglide/messages.js";
-import { Flex, Box } from "styled-system/jsx";
-import { Text } from "@cronos-app/park-ui/text.js";
-import { Button } from "@cronos-app/park-ui/button.js";
-import { FormLabel } from "@cronos-app/park-ui/form-label.js";
-import { Input } from "@cronos-app/park-ui/input.js";
-import { Checkbox } from "@cronos-app/park-ui/checkbox.js";
 
 export const About = () => {
   return (
-    <Box mx="auto" p={4} bg="bg.subtle">
-      <Text as="h1" size="2xl">
-        {m.test()}
-      </Text>
-      <Text as="h2" size="xl" fontWeight={"bold"}>
-        This is my test app
-      </Text>
-      <Text size="sm">1123123</Text>
+    <div>
+      <p className="text-sm">{m.test()}</p>
+      <p className="font-bold">This is my test app</p>
       <Counter />
       <LoginForm />
-    </Box>
+    </div>
   );
 };
 
@@ -28,27 +17,22 @@ const Counter: React.FC = () => {
   const [count, setCount] = useState(0);
 
   return (
-    <Flex gap={1} alignItems={"center"}>
-      <Button
-        variant={"outline"}
-        colorPalette={"accent"}
-        colorScheme={"light"}
-        onClick={() => setCount(count - 1)}
-      >
+    <div className="gap-1 items-center flex">
+      <button className="btn btn-outline" onClick={() => setCount(count - 1)}>
         -
-      </Button>
-      <Text size="sm">{count}</Text>
-      <Button variant="jason" onClick={() => setCount(count + 1)}>
+      </button>
+      <p className="text-sm">{count}</p>
+      <button className="btn btn-outline" onClick={() => setCount(count + 1)}>
         +
-      </Button>
-    </Flex>
+      </button>
+    </div>
   );
 };
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -58,27 +42,39 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormLabel htmlFor="name">email</FormLabel>
-      <Input
-        id="name"
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <label className="label" htmlFor="email">
+        email
+      </label>
+      <input
+        id="email"
         type="email"
+        className="input input-primary"
         value={email}
         onChange={(event) => setEmail(event.target.value)}
       />
-      <Input
+      <label className="label" htmlFor="password">
+        password
+      </label>
+      <input
+        id="password"
         type="password"
+        className="input input-primary"
         value={password}
         onChange={(event) => setPassword(event.target.value)}
       />
-      <Checkbox
+
+      <input
+        className="checkbox checkbox-primary"
+        type="checkbox"
         checked={rememberMe}
-        onChange={(event) => {
-          // @ts-expect-error a
-          setRememberMe(event.target.checked);
+        onChange={() => {
+          setRememberMe((p) => !p);
         }}
       />
-      <Button type="submit">Login</Button>
+      <button className="btn btn-info" type="submit">
+        Login
+      </button>
     </form>
   );
 };

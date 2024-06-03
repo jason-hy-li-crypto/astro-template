@@ -1,247 +1,89 @@
 import { m } from "@cronos-app/i18n/m";
 import { Ticket } from "@cronos-app/icons/src";
-import { Accordion, Alert, DatePicker, Menu } from "@cronos-app/park-ui";
-import { Icon } from "@cronos-app/park-ui/alert";
-import { Button } from "@cronos-app/park-ui/button";
-import { IconButton } from "@cronos-app/park-ui/icon-button";
-import { Input } from "@cronos-app/park-ui/input";
 import { currentWallet } from "@cronos-app/wallet";
 import { useState } from "react";
-import { Container, Flex } from "styled-system/jsx";
 
 export const Home = () => {
   const isConnected = currentWallet.useIsConnected();
   const [isOpenMenu, setMenuOpen] = useState(false);
   return (
-    <Container>
+    <div className="p-4 flex gap-4 flex-col">
       {isConnected ? (
-        <Button
-          variant={"ghost"}
+        <button
+          className="btn btn-error"
           onClick={() => {
             currentWallet.disconnect();
           }}
         >
           Disconnect
-        </Button>
+        </button>
       ) : (
-        <Button onClick={() => currentWallet.connect()}>Connect</Button>
+        <button
+          className="btn btn-primary"
+          onClick={() => currentWallet.connect()}
+        >
+          Connect
+          <Ticket className="border-warning border rounded-sm" />
+        </button>
       )}
 
       <h1>{m.test()}</h1>
-      <p>This is the landing page.</p>
-      <Menu.Root
-        onOpenChange={(d) => {
-          setMenuOpen(d.open);
-        }}
-      >
-        <Menu.Trigger>
-          <Button color={isOpenMenu ? "red" : "green"}>
-            Open menu <Menu.Indicator>+</Menu.Indicator>
-          </Button>
-        </Menu.Trigger>
-        <Menu.Positioner>
-          <Menu.Content>
-            <Menu.Item value="react">React</Menu.Item>
-            <Menu.Item value="solid">Solid</Menu.Item>
-            <Menu.Item value="vue">Vue</Menu.Item>
-          </Menu.Content>
-        </Menu.Positioner>
-      </Menu.Root>
-      <Button
-        variant={"jason"}
-        onClick={() => {
-          alert("clcik");
-        }}
-      >
-        Get Started
-        <Ticket />
-      </Button>
-      <Accordion.Root defaultValue={["React"]} multiple>
-        {["React", "Solid", "Vue"].map((item) => (
-          <Accordion.Item key={item} value={item}>
-            <Accordion.ItemTrigger>
-              {item}
-              <Accordion.ItemIndicator>+</Accordion.ItemIndicator>
-            </Accordion.ItemTrigger>
-            <Accordion.ItemContent>
-              {item} is a JavaScript library for building user interfaces.
-            </Accordion.ItemContent>
-          </Accordion.Item>
-        ))}
-      </Accordion.Root>
-      <Alert.Root>
-        <Alert.Icon>+</Alert.Icon>
-        <Alert.Title>Browser Update available</Alert.Title>
-      </Alert.Root>
-      <Flex>
-        <DatePicker.Root
-          positioning={{ sameWidth: true }}
-          startOfWeek={1}
-          selectionMode="range"
+      <details className="dropdown">
+        <summary className="m-1 btn">open or close</summary>
+        <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+          <li>
+            <a>Item 1</a>
+          </li>
+          <li>
+            <a>Item 2</a>
+          </li>
+        </ul>
+      </details>
+
+      <div className="collapse bg-base-200">
+        <input type="radio" name="my-accordion-1" defaultChecked />
+        <div className="collapse-title text-xl font-medium">
+          Click to open this one and close others
+        </div>
+        <div className="collapse-content">
+          <p>hello</p>
+        </div>
+      </div>
+      <div className="collapse bg-base-200">
+        <input type="radio" name="my-accordion-1" />
+        <div className="collapse-title text-xl font-medium">
+          Click to open this one and close others
+        </div>
+        <div className="collapse-content">
+          <p>hello</p>
+        </div>
+      </div>
+      <div className="collapse bg-base-200">
+        <input type="radio" name="my-accordion-1" />
+        <div className="collapse-title text-xl font-medium">
+          Click to open this one and close others
+        </div>
+        <div className="collapse-content">
+          <p>hello</p>
+        </div>
+      </div>
+      <div role="alert" className="alert alert-info">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className="stroke-current shrink-0 w-6 h-6"
         >
-          <DatePicker.Label>Date Picker</DatePicker.Label>
-          <DatePicker.Control>
-            <DatePicker.Input index={0} asChild>
-              <Input />
-            </DatePicker.Input>
-            <DatePicker.Input index={1} asChild>
-              <Input />
-            </DatePicker.Input>
-            <DatePicker.Trigger asChild>
-              <IconButton variant="outline" aria-label="Open date picker">
-                🗓️
-              </IconButton>
-            </DatePicker.Trigger>
-          </DatePicker.Control>
-          <DatePicker.Positioner>
-            <DatePicker.Content>
-              <DatePicker.View view="day">
-                <DatePicker.Context>
-                  {(api) => (
-                    <>
-                      <DatePicker.ViewControl>
-                        <DatePicker.PrevTrigger asChild>
-                          <IconButton variant="ghost" size="sm">
-                            {"<"}
-                          </IconButton>
-                        </DatePicker.PrevTrigger>
-                        <DatePicker.ViewTrigger asChild>
-                          <Button variant="ghost" size="sm">
-                            <DatePicker.RangeText />
-                          </Button>
-                        </DatePicker.ViewTrigger>
-                        <DatePicker.NextTrigger asChild>
-                          <IconButton variant="ghost" size="sm">
-                            {">"}
-                          </IconButton>
-                        </DatePicker.NextTrigger>
-                      </DatePicker.ViewControl>
-                      <DatePicker.Table>
-                        <DatePicker.TableHead>
-                          <DatePicker.TableRow>
-                            {api.weekDays.map((weekDay, id) => (
-                              <DatePicker.TableHeader key={id}>
-                                {weekDay.narrow}
-                              </DatePicker.TableHeader>
-                            ))}
-                          </DatePicker.TableRow>
-                        </DatePicker.TableHead>
-                        <DatePicker.TableBody>
-                          {api.weeks.map((week, id) => (
-                            <DatePicker.TableRow key={id}>
-                              {week.map((day, id) => (
-                                <DatePicker.TableCell key={id} value={day}>
-                                  <DatePicker.TableCellTrigger asChild>
-                                    <IconButton variant="ghost">
-                                      {day.day}
-                                    </IconButton>
-                                  </DatePicker.TableCellTrigger>
-                                </DatePicker.TableCell>
-                              ))}
-                            </DatePicker.TableRow>
-                          ))}
-                        </DatePicker.TableBody>
-                      </DatePicker.Table>
-                    </>
-                  )}
-                </DatePicker.Context>
-              </DatePicker.View>
-              <DatePicker.View view="month">
-                <DatePicker.Context>
-                  {(api) => (
-                    <>
-                      <DatePicker.ViewControl>
-                        <DatePicker.PrevTrigger asChild>
-                          <IconButton variant="ghost" size="sm">
-                            {"<"}
-                          </IconButton>
-                        </DatePicker.PrevTrigger>
-                        <DatePicker.ViewTrigger asChild>
-                          <Button variant="ghost" size="sm">
-                            <DatePicker.RangeText />
-                          </Button>
-                        </DatePicker.ViewTrigger>
-                        <DatePicker.NextTrigger asChild>
-                          <IconButton variant="ghost" size="sm">
-                            {">"}
-                          </IconButton>
-                        </DatePicker.NextTrigger>
-                      </DatePicker.ViewControl>
-                      <DatePicker.Table>
-                        <DatePicker.TableBody>
-                          {api
-                            .getMonthsGrid({ columns: 4, format: "short" })
-                            .map((months, id) => (
-                              <DatePicker.TableRow key={id}>
-                                {months.map((month, id) => (
-                                  <DatePicker.TableCell
-                                    key={id}
-                                    value={month.value}
-                                  >
-                                    <DatePicker.TableCellTrigger asChild>
-                                      <Button variant="ghost">
-                                        {month.label}
-                                      </Button>
-                                    </DatePicker.TableCellTrigger>
-                                  </DatePicker.TableCell>
-                                ))}
-                              </DatePicker.TableRow>
-                            ))}
-                        </DatePicker.TableBody>
-                      </DatePicker.Table>
-                    </>
-                  )}
-                </DatePicker.Context>
-              </DatePicker.View>
-              <DatePicker.View view="year">
-                <DatePicker.Context>
-                  {(api) => (
-                    <>
-                      <DatePicker.ViewControl>
-                        <DatePicker.PrevTrigger asChild>
-                          <IconButton variant="ghost" size="sm">
-                            {"<"}
-                          </IconButton>
-                        </DatePicker.PrevTrigger>
-                        <DatePicker.ViewTrigger asChild>
-                          <Button variant="ghost" size="sm">
-                            <DatePicker.RangeText />
-                          </Button>
-                        </DatePicker.ViewTrigger>
-                        <DatePicker.NextTrigger asChild>
-                          <IconButton variant="ghost" size="sm">
-                            {">"}
-                          </IconButton>
-                        </DatePicker.NextTrigger>
-                      </DatePicker.ViewControl>
-                      <DatePicker.Table>
-                        <DatePicker.TableBody>
-                          {api.getYearsGrid({ columns: 4 }).map((years, id) => (
-                            <DatePicker.TableRow key={id}>
-                              {years.map((year, id) => (
-                                <DatePicker.TableCell
-                                  key={id}
-                                  value={year.value}
-                                >
-                                  <DatePicker.TableCellTrigger asChild>
-                                    <Button variant="ghost">
-                                      {year.label}
-                                    </Button>
-                                  </DatePicker.TableCellTrigger>
-                                </DatePicker.TableCell>
-                              ))}
-                            </DatePicker.TableRow>
-                          ))}
-                        </DatePicker.TableBody>
-                      </DatePicker.Table>
-                    </>
-                  )}
-                </DatePicker.Context>
-              </DatePicker.View>
-            </DatePicker.Content>
-          </DatePicker.Positioner>
-        </DatePicker.Root>
-      </Flex>
-    </Container>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <span>New software update available.</span>
+      </div>
+      <input className="input " type="date" />
+    </div>
   );
 };
