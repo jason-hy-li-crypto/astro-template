@@ -7,7 +7,8 @@ export const Home = () => {
   const [isOpenMenu, setMenuOpen] = useState(false);
   return (
     <div className="p-4 flex flex-col ">
-      <button className="btn btn-jason">jason</button>
+      <button className="btn btn-jason bg-accent">jason</button>
+      <button className="btn btn-primary">primary</button>
 
       {isConnected ? (
         <button
@@ -20,7 +21,7 @@ export const Home = () => {
         </button>
       ) : (
         <button
-          className="btn btn-primary"
+          className="btn btn-secondary"
           onClick={() => currentWallet.connect()}
         >
           Connect
