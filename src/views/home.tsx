@@ -2,12 +2,13 @@ import { m } from "@cronos-app/i18n/m";
 import { Ticket } from "@cronos-app/icons/src";
 import { currentWallet } from "@cronos-app/wallet";
 import { useState } from "react";
-
 export const Home = () => {
   const isConnected = currentWallet.useIsConnected();
   const [isOpenMenu, setMenuOpen] = useState(false);
   return (
-    <div className="p-4 flex gap-4 flex-col">
+    <div className="p-4 flex flex-col ">
+      <button className="btn btn-jason">jason</button>
+
       {isConnected ? (
         <button
           className="btn btn-error"
