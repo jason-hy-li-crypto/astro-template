@@ -1,10 +1,39 @@
 ---
----
+import {PopoverDemo} from '~/components/Popover'
+import { WalletButton } from '~/components/WalletButton'
 
-<div class="gap-4 p-4">
-  <a href="/en" class="link" data-astro-prefetch>Home</a>
-  <a href="/en/about" class="link" data-astro-prefetch>about</a>
-  <a href="/en/trade" class="link">Trade</a>
-  <a href="/en/earn" class="link">Earn</a>
-  <a href="/en/dashboard" class="link">Dashboard</a>
+let open = false
+
+---
+<!-- <div class="navbar bg-base-100">
+  <a href="/en" class="btn btn-ghost text-xl" data-astro-prefetch>Home</a>
+  <a href="/en/about" class="btn btn-ghost text-xl" data-astro-prefetch>about</a>
+  <a href="/en/trade" class="btn btn-ghost text-xl">Trade</a>
+  <a href="/en/earn" class="btn btn-ghost text-xl">Earn</a>
+  <a href="/en/dashboard" class="btn btn-ghost text-xl">Dashboard</a>
+</div> -->
+
+<div class="flex items-center justify-between py-2 px-4 bg-base-100">
+
+  <div class="flex items-center">
+    <div class="hidden md:flex">
+      <a href="/en" class="btn btn-ghost text-xl" data-astro-prefetch>Home</a>
+      <a href="/en/about" class="btn btn-ghost text-xl" data-astro-prefetch>About</a>
+      <a href="/en/trade" class="btn btn-ghost text-xl">Trade</a>
+      <a href="/en/earn" class="btn btn-ghost text-xl">Earn</a>
+      <a href="/en/dashboard" class="btn btn-ghost text-xl">Dashboard</a>
+    </div>
+  </div>
+
+    <div class="btm-nav-xs md:hidden flex">
+      <a href="/en" class="btn btn-ghost text-xl" data-astro-prefetch>Home</a>
+      <a href="/en/about" class="btn btn-ghost text-xl" data-astro-prefetch>About</a>
+      <a href="/en/trade" class="btn btn-ghost text-xl">Trade</a>
+      <a href="/en/earn" class="btn btn-ghost text-xl">Earn</a>
+      <a href="/en/dashboard" class="btn btn-ghost text-xl">Dashboard</a>
+    </div>
+
+  <WalletButton client:idle/>
+  <!-- <PopoverDemo client:idle/> -->
+
 </div>
