@@ -5,7 +5,7 @@ type Store = {
   setChainId: (chainId: number) => void;
 };
 
-export const useChainId = create<Store>()(
+export const useChainIdPersist = create<Store>()(
   persist(
     (set) => ({
       chainId: 25,
