@@ -3,21 +3,20 @@ import { useGlobalStore } from "~/store/globalstore";
 import { $counter } from "~/store/nano";
 
 export const StoreDemo = () => {
-  const hi = useGlobalStore();
+  const zustand = useGlobalStore();
   const nano = useStore($counter);
-  // const isM = useIsMounted();
 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
         <button
           className="btn btn-circle"
-          onClick={() => hi.increasePopulation()}
+          onClick={() => zustand.increasePopulation()}
         >
           +
         </button>
-        {hi.bears}
-        <button className="btn btn-circle" onClick={() => hi.removeAllBears()}>
+        {zustand.bears}
+        <button className="btn btn-circle" onClick={() => zustand.removeAllBears()}>
           -
         </button>
       </div>

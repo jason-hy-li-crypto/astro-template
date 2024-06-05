@@ -6,24 +6,8 @@ type Store = {
   removeAllBears: () => void;
 };
 
-const useGlobalStore = create<Store>((set) => ({
+export const useGlobalStore = create<Store>((set) => ({
   bears: 0,
   increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
   removeAllBears: () => set({ bears: 0 }),
 }));
-// const useGlobalStore = create<Store>()(
-//   persist(
-//     (set) => ({
-//       bears: 0,
-//       increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-//       removeAllBears: () => set({ bears: 0 }),
-//     }),
-//     {
-//       name: "bears",
-//       version: 1,
-//     }
-//   )
-// );
-const { getState, setState, subscribe, destroy } = useGlobalStore;
-
-export { getState, setState, subscribe, destroy, useGlobalStore };
