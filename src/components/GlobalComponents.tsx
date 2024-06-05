@@ -9,7 +9,11 @@ import {
 } from "@tanstack/react-query";
 import { queryClient } from "~/services/tanstackQuery";
 import { GlobalHooks } from "./GlobalHooks";
-import { useChainIdZustandPersist } from "~/store/chainIdStore";
+import {
+  $chaidIdNanoPersist,
+  useChainIdZustandPersist,
+} from "~/store/persistStore";
+import { useStore } from "@nanostores/react";
 export const GlobalComponents = ({}) => {
   return (
     <QueryClientProvider client={queryClient}>
@@ -22,7 +26,11 @@ export const GlobalComponents = ({}) => {
 const RealGlobalComponents = () => {
   return (
     <>
+      <p className="alert alert-warning">
+        refresh the page, and the initial state is 25, then update to 324
+      </p>
       <ZustandPersistDemo />
+      <NanoPersistDemo />
     </>
   );
 };
@@ -48,6 +56,35 @@ const ZustandPersistDemo = () => {
             className="btn btn-outline"
             onClick={() => {
               setChainId(324);
+            }}
+          >
+            to zkSync
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
+const NanoPersistDemo = () => {
+  const chainId = useStore($chaidIdNanoPersist);
+  return (
+    <>
+      <div className="flex p-4 flex-col">
+        <p className="text-xl">Nano persist </p>
+        <div className="text-lg">current: {chainId.chainId}</div>
+        <div className="flex gap-4">
+          <button
+            className="btn btn-outline"
+            onClick={() => {
+              $chaidIdNanoPersist.set({ chainId: 25 });
+            }}
+          >
+            to cronos
+          </button>
+          <button
+            className="btn btn-outline"
+            onClick={() => {
+              $chaidIdNanoPersist.set({ chainId: 324 });
             }}
           >
             to zkSync

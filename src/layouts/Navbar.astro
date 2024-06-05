@@ -2,8 +2,6 @@
 import {PopoverDemo} from '~/components/Popover'
 import { WalletButton } from '~/components/WalletButton'
 
-let open = false
-
 ---
 <!-- <div class="navbar bg-base-100">
   <a href="/en" class="btn btn-ghost text-xl" data-astro-prefetch>Home</a>
@@ -32,7 +30,7 @@ let open = false
       <a href="/en/earn" class="btn btn-ghost text-xl">Earn</a>
       <a href="/en/dashboard" class="btn btn-ghost text-xl">Dashboard</a>
     </div>
-
+  {Astro.url.href}
   <WalletButton client:idle/>
   <!-- <PopoverDemo client:idle/> -->
 

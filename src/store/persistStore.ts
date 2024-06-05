@@ -21,7 +21,7 @@ export const useChainIdZustandPersist = create<Store>()(
   )
 );
 
-export const useChainIdNanoPersist = persistentAtom<{ chainId: number }>(
+export const $chaidIdNanoPersist = persistentAtom<{ chainId: number }>(
   "nano-chainId",
   {
     chainId: 25,

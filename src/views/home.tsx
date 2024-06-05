@@ -15,7 +15,6 @@ import { currentWallet } from "@cronos-app/wallet";
 import { useState } from "react";
 import { BasicToast } from "~/components/Toast";
 import { ToastAria } from "~/components/ToastAria";
-import { useGlobalStore } from "~/store/globalstore";
 import { $counter } from "~/store/nano";
 import { StoreDemo } from "~/components/StoreDemo";
 import { queryClient } from "~/services/tanstackQuery";

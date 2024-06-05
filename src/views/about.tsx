@@ -10,7 +10,6 @@ import {
 import React, { useState } from "react";
 
 import * as m from "../lib/i18n/paraglide/messages.js";
-import { useGlobalStore } from "~/store/globalstore.js";
 import { StoreDemo } from "~/components/StoreDemo.js";
 import { queryClient } from "~/services/tanstackQuery.js";
 import { useDemoQuery } from "~/services/useDemoQuery.js";
@@ -38,8 +37,6 @@ export const AboutComponent = () => {
         {isLoading && <div className="skeleton w-full h-[300px]"></div>}
       </div>
       <StoreDemo />
-      
     </div>
   );
 };
-
